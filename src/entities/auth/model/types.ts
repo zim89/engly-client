@@ -2,7 +2,8 @@ import type {
   EnglishLevelType,
   GenderType,
   NativeLanguageType,
-} from '@/shared/types'
+} from '@/shared/constants'
+import type { TokenType } from '@/shared/types'
 
 export interface RegisterFormData {
   username: string
@@ -24,7 +25,7 @@ export interface LoginFormData {
 export interface AuthResponse {
   access_token: string
   access_token_expiry: number
-  token_type: 'Bearer'
+  token_type: TokenType
   user_name: string
   refresh_token: string
 }
