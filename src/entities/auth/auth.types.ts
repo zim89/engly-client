@@ -2,14 +2,13 @@ import type {
   EnglishLevelType,
   GenderType,
   NativeLanguageType,
-} from '@/shared/constants'
-import type { TokenType } from '@/shared/types'
+  TokenType,
+} from '@/shared/types'
 
-export interface RegisterFormData {
+export interface RegisterRequestDto {
   username: string
   email: string
   password: string
-  dateOfBirth: string
   englishLevel: EnglishLevelType
   nativeLanguage: NativeLanguageType
   goals: string
@@ -17,7 +16,7 @@ export interface RegisterFormData {
   avatar?: File
 }
 
-export interface LoginFormData {
+export interface LoginRequestDto {
   email: string
   password: string
 }

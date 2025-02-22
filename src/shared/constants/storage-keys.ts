@@ -1,4 +1,4 @@
 export const storageKeys = {
-  accessToken: 'accessToken',
-  refreshToken: 'refreshToken',
+  accessToken: 'engly_accessToken',
+  refreshToken: 'engly_refreshToken',
 } as const

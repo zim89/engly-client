@@ -1,2 +1,2 @@
-export * from './api';
-export * from './model';
+export * from './auth.api'
+export * from './auth.types'

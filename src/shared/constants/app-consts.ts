@@ -1,5 +1,5 @@
 export const appConsts = {
-  baseUrl: 'https://favourable-rodie-java-service-b82e5859.koyeb.app',
+  apiUrl: 'https://favourable-rodie-java-service-b82e5859.koyeb.app',
   isClient: typeof window !== 'undefined',
 } as const
 
@@ -15,14 +15,11 @@ export const nativeLanguages = {
   arabic: 'ARABIC',
   chinese: 'CHINESE',
 } as const
-export type NativeLanguageType =
-  (typeof nativeLanguages)[keyof typeof nativeLanguages]
 
 export const genders = {
   female: 'FEMALE',
   male: 'MALE',
 } as const
-export type GenderType = (typeof genders)[keyof typeof genders]
 
 export const englishLevels = {
   a1: 'A1',
@@ -32,5 +29,8 @@ export const englishLevels = {
   c1: 'C1',
   c2: 'C2',
 } as const
-export type EnglishLevelType =
-  (typeof englishLevels)[keyof typeof englishLevels]
+
+export const tokenTypes = {
+  bearer: 'Bearer',
+  basic: 'Basic',
+} as const

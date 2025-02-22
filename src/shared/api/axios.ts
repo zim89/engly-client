@@ -31,7 +31,7 @@ const errorCatch = (error: AxiosError<ApiErrorResponse>): string => {
 }
 
 const options: CreateAxiosDefaults = {
-  baseURL: appConsts.baseUrl,
+  baseURL: appConsts.apiUrl,
   headers: getContentType(),
   withCredentials: true,
 }

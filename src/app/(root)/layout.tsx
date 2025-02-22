@@ -1,7 +1,11 @@
-import { AppSidebar } from '@/shared/ui/app-sidebar'
 import { SidebarProvider } from '@/shared/ui/common/sidebar'
+import { AppSidebar } from '@/shared/ui'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <SidebarProvider
       style={
