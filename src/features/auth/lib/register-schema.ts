@@ -1,22 +1,44 @@
 import { z } from 'zod'
-import { englishLevels, genders, nativeLanguages } from '@/shared/constants'
+import { englishLevels, genders, nativeLanguages, regex } from '@/shared/constants'
 import type { EnglishLevelType, GenderType, NativeLanguageType } from '@/shared/types'
+
+const maxUsernameLength = 50
+const maxEmailLength = 50
+const maxPasswordLength = 30
+const minPasswordLength = 8
 
 export const RegisterFormSchema = z
   .object({
-    username: z.string().min(1, {
-      message: 'Required field',
-    }),
-    email: z.string().email({
-      message: 'Invalid email address',
-    }),
+    username: z
+      .string()
+      .min(1, {
+        message: 'Required field',
+      })
+      .max(maxUsernameLength, {
+        message: `Username must be less than ${maxUsernameLength} characters`,
+      })
+      .regex(new RegExp(regex.username), {
+        message:
+          'Username must start with a letter and can contain only letters, numbers, dots, underscores and hyphens',
+      }),
+    email: z
+      .string()
+      .max(maxEmailLength, {
+        message: `Email must be less than ${maxEmailLength} characters`,
+      })
+      .email({
+        message: 'Invalid email address',
+      }),
     password: z
       .string()
       .min(1, {
         message: 'Required field',
       })
-      .min(8, {
-        message: 'Password must be at least 8 characters',
+      .min(minPasswordLength, {
+        message: `Password must be at least ${minPasswordLength} characters`,
+      })
+      .max(maxPasswordLength, {
+        message: `Password must be less than ${maxPasswordLength} characters`,
       }),
     confirm: z.string().min(1, {
       message: 'Required field',

@@ -14,9 +14,13 @@ export const authApi = {
     data: RegisterRequestDto,
     { signal }: SignalOptions,
   ): Promise<AuthResponse> => {
-    const response = await axiosBase.post<AuthResponse>(endpoints.register, data, {
-      signal,
-    })
+    const response = await axiosBase.post<AuthResponse>(
+      endpoints.register,
+      { ...data, dateOfBirth: '2025-02-19' },
+      {
+        signal,
+      },
+    )
 
     return response.data
   },

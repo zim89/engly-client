@@ -27,16 +27,16 @@ export function RegisterForm() {
     defaultValues: {
       username: '',
       email: '',
-      password: '',
-      confirm: '',
+      password: 'VmaP_NZOBp#HF2LM7Ks?cSsyLc?@vq',
+      confirm: 'VmaP_NZOBp#HF2LM7Ks?cSsyLc?@vq',
       nativeLanguage: undefined,
       englishLevel: undefined,
       gender: undefined,
-      goals: 'default',
+      goals: 'DEFAULT',
     },
   })
 
-  const { mutate, data: user, isPending } = useRegister()
+  const { mutate, isPending } = useRegister()
 
   const onContinue = async () => {
     const isValid = await form.trigger(['username', 'email', 'password', 'confirm'])
@@ -51,7 +51,6 @@ export function RegisterForm() {
   const onSubmit = (data: RegisterFormValues) => {
     const formData = excludeProperties(data, ['confirm'])
     mutate({ formData })
-    console.log(user)
   }
 
   return (
