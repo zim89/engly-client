@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { englishLevels, genders, nativeLanguages, regex } from '@/shared/constants'
-import type { EnglishLevelType, GenderType, NativeLanguageType } from '@/shared/types'
+import { EngLevelEnum, GenderEnum, NativeLangEnum, Regex } from '@/shared/constants'
+import type { EngLevelType, GenderType, NativeLangType } from '@/shared/types'
 
 const maxUsernameLength = 50
 const maxEmailLength = 50
@@ -17,7 +17,7 @@ export const RegisterFormSchema = z
       .max(maxUsernameLength, {
         message: `Username must be less than ${maxUsernameLength} characters`,
       })
-      .regex(new RegExp(regex.username), {
+      .regex(new RegExp(Regex.Username), {
         message:
           'Username must start with a letter and can contain only letters, numbers, dots, underscores and hyphens',
       }),
@@ -39,25 +39,29 @@ export const RegisterFormSchema = z
       })
       .max(maxPasswordLength, {
         message: `Password must be less than ${maxPasswordLength} characters`,
+      })
+      .regex(new RegExp(Regex.Password), {
+        message:
+          'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
       }),
     confirm: z.string().min(1, {
       message: 'Required field',
     }),
     nativeLanguage: z.enum(
-      Object.values(nativeLanguages) as [NativeLanguageType, ...NativeLanguageType[]],
+      Object.values(NativeLangEnum) as [NativeLangType, ...NativeLangType[]],
       {
         required_error: 'Required field',
         invalid_type_error: 'Please select valid native language',
       },
     ),
     englishLevel: z.enum(
-      Object.values(englishLevels) as [EnglishLevelType, ...EnglishLevelType[]],
+      Object.values(EngLevelEnum) as [EngLevelType, ...EngLevelType[]],
       {
         required_error: 'Required field',
         invalid_type_error: 'Please select valid English level',
       },
     ),
-    gender: z.enum(Object.values(genders) as [GenderType, ...GenderType[]], {
+    gender: z.enum(Object.values(GenderEnum) as [GenderType, ...GenderType[]], {
       required_error: 'Required field',
       invalid_type_error: 'Please select valid gender',
     }),

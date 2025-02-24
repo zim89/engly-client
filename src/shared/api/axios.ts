@@ -3,7 +3,7 @@ import axios, {
   type AxiosError,
   type InternalAxiosRequestConfig,
 } from 'axios'
-import { appConsts } from '@/shared/constants'
+import { AppConfig } from '@/shared/constants'
 import { getAccessToken, removeFromStorage } from '@/shared/utils'
 
 declare module 'axios' {
@@ -23,15 +23,11 @@ const getContentType = () => ({
 const errorCatch = (error: AxiosError<ApiErrorResponse>): string => {
   const message = error?.response?.data?.message
 
-  return message
-    ? Array.isArray(message)
-      ? message[0]
-      : message
-    : error.message
+  return message ? (Array.isArray(message) ? message[0] : message) : error.message
 }
 
 const options: CreateAxiosDefaults = {
-  baseURL: appConsts.apiUrl,
+  baseURL: AppConfig.apiUrl,
   headers: getContentType(),
   withCredentials: true,
 }

@@ -1,16 +1,11 @@
-import type {
-  EnglishLevelType,
-  GenderType,
-  NativeLanguageType,
-  TokenType,
-} from '@/shared/types'
+import type { EngLevelType, GenderType, NativeLangType, TokenType } from '@/shared/types'
 
 export interface RegisterRequestDto {
   username: string
   email: string
   password: string
-  englishLevel: EnglishLevelType
-  nativeLanguage: NativeLanguageType
+  englishLevel: EngLevelType
+  nativeLanguage: NativeLangType
   goals: string
   gender: GenderType
   avatar?: File

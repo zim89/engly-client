@@ -1,36 +1,41 @@
-export const appConsts = {
+export const AppConfig = {
   apiUrl: 'https://favourable-rodie-java-service-b82e5859.koyeb.app',
   isClient: typeof window !== 'undefined',
 } as const
 
-export const nativeLanguages = {
-  english: 'ENGLISH',
-  japanese: 'JAPANESE',
-  hindi: 'HINDI',
-  russian: 'RUSSIAN',
-  spanish: 'SPANISH',
-  portuguese: 'PORTUGUESE',
-  german: 'GERMAN',
-  french: 'FRENCH',
-  arabic: 'ARABIC',
-  chinese: 'CHINESE',
+export const NativeLangEnum = {
+  English: 'ENGLISH',
+  Japanese: 'JAPANESE',
+  Hindi: 'HINDI',
+  Russian: 'RUSSIAN',
+  Spanish: 'SPANISH',
+  Portuguese: 'PORTUGUESE',
+  German: 'GERMAN',
+  French: 'FRENCH',
+  Arabic: 'ARABIC',
+  Chinese: 'CHINESE',
 } as const
 
-export const genders = {
-  female: 'FEMALE',
-  male: 'MALE',
+export const GenderEnum = {
+  Female: 'FEMALE',
+  Male: 'MALE',
 } as const
 
-export const englishLevels = {
-  a1: 'A1',
-  a2: 'A2',
-  b1: 'B1',
-  b2: 'B2',
-  c1: 'C1',
-  c2: 'C2',
+export const EngLevelEnum = {
+  A1: 'A1',
+  A2: 'A2',
+  B1: 'B1',
+  B2: 'B2',
+  C1: 'C1',
+  C2: 'C2',
 } as const
 
-export const tokenTypes = {
-  bearer: 'Bearer',
-  basic: 'Basic',
+export const TokenTypeEnum = {
+  Bearer: 'Bearer',
+  Basic: 'Basic',
+} as const
+
+export const StorageKeyEnum = {
+  AccessToken: 'engly_accessToken',
+  RefreshToken: 'engly_refreshToken',
 } as const

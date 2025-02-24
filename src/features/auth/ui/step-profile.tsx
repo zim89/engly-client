@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/ui/common/select'
-import { englishLevels, genders, nativeLanguages } from '@/shared/constants'
+import { EngLevelEnum, GenderEnum, NativeLangEnum } from '@/shared/constants'
 import type { RegisterFormValues } from '../lib'
 
 const data = [
@@ -22,21 +22,21 @@ const data = [
     label: 'Gender',
     placeholder: 'Select your gender',
     type: 'select',
-    obj: genders,
+    obj: GenderEnum,
   },
   {
     name: 'nativeLanguage',
     label: 'Native language',
     placeholder: 'Select your native language',
     type: 'select',
-    obj: nativeLanguages,
+    obj: NativeLangEnum,
   },
   {
     name: 'englishLevel',
     label: 'Native language',
     placeholder: 'Select your English level',
     type: 'select',
-    obj: englishLevels,
+    obj: EngLevelEnum,
   },
 ] as const
 

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { authApi, type RegisterRequestDto } from '@/entities/auth'
-import { appRoutes } from '@/shared/constants'
+import { AppRoutes } from '@/shared/config'
 import { saveTokenStorage } from '@/shared/utils'
 
 export interface RegisterMutationParams {
@@ -31,7 +31,7 @@ export function useRegister() {
     onSuccess: async data => {
       toast.success('User registered successfully.')
       saveTokenStorage(data.access_token)
-      router.push(appRoutes.chats)
+      router.push(AppRoutes.chats)
     },
     // onSettled: async (data, error, variables, context) => {},
   })

@@ -85,6 +85,18 @@ const eslintConfig = [
               ],
               allow: ['index.ts', '*.(ts|tsx)'],
             },
+            // shared/config
+            {
+              target: [
+                [
+                  'shared',
+                  {
+                    segment: 'config',
+                  },
+                ],
+              ],
+              allow: ['index.ts'],
+            },
             // shared/hooks
             {
               target: [
@@ -174,15 +186,13 @@ const eslintConfig = [
               from: 'shared',
               allow: ['shared'],
               disallow: ['app', 'views', 'widgets', 'features', 'entities'],
-              message:
-                'Shared module must not import upper layers (${dependency.type})',
+              message: 'Shared module must not import upper layers (${dependency.type})',
             },
             {
               from: 'entities',
               allow: ['shared'],
               disallow: ['app', 'views', 'widgets', 'features'],
-              message:
-                'Entity must not import upper layers (${dependency.type})',
+              message: 'Entity must not import upper layers (${dependency.type})',
             },
             {
               from: ['entities'],
@@ -200,8 +210,7 @@ const eslintConfig = [
               from: 'features',
               allow: ['entities', 'shared'],
               disallow: ['app', 'views', 'widgets'],
-              message:
-                'Feature must not import upper layers (${dependency.type})',
+              message: 'Feature must not import upper layers (${dependency.type})',
             },
             {
               from: ['features'],
@@ -219,8 +228,7 @@ const eslintConfig = [
               from: 'widgets',
               allow: ['features', 'entities', 'shared'],
               disallow: ['app', 'views'],
-              message:
-                'Feature must not import upper layers (${dependency.type})',
+              message: 'Feature must not import upper layers (${dependency.type})',
             },
             {
               from: ['widgets'],

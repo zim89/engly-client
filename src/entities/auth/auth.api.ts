@@ -1,5 +1,5 @@
 import { axiosBase } from '@/shared/api'
-import { tokenTypes } from '@/shared/constants'
+import { TokenTypeEnum } from '@/shared/constants'
 import type { SignalOptions } from '@/shared/types'
 import type { AuthResponse, LoginRequestDto, RegisterRequestDto } from './auth.types'
 
@@ -37,7 +37,7 @@ export const authApi = {
       {
         signal,
         headers: {
-          Authorization: `${tokenTypes.basic} ${encodedCredentials}`,
+          Authorization: `${TokenTypeEnum.Basic} ${encodedCredentials}`,
         },
       },
     )
