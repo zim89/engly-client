@@ -1,6 +1,6 @@
-export const AppRoutes = {
-  login: '/auth/login',
-  register: '/auth/register',
+export const appRoutes = {
+  login: '/login',
+  register: '/register',
   profile: '/profile',
   home: '/',
   chats: '/chats',

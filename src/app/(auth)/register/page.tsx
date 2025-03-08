@@ -8,10 +8,6 @@ export const metadata: Metadata = {
   keywords: 'register, sign up, create account, engly',
 }
 
-export default function AuthPage() {
-  return (
-    <div>
-      <RegisterForm />
-    </div>
-  )
+export default function RegisterPage() {
+  return <RegisterForm />
 }

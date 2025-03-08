@@ -1,11 +1,17 @@
 import { axiosBase } from '@/shared/api'
 import { TokenTypeEnum } from '@/shared/constants'
 import type { SignalOptions } from '@/shared/types'
-import type { AuthResponse, LoginRequestDto, RegisterRequestDto } from './auth.types'
+import type {
+  AuthResponse,
+  AvailableResponse,
+  LoginRequestDto,
+  RegisterRequestDto,
+} from './types'
 
 const endpoints = {
   register: '/sign-up',
   login: '/sign-in',
+  checkUsername: '/check-username?username=',
   refreshToken: '/refresh-token',
 } as const
 
@@ -55,6 +61,14 @@ export const authApi = {
           // Authorization: `Bearer ${getRefreshToken()}`,
         },
       },
+    )
+
+    return response.data
+  },
+
+  checkUsername: async (username: string): Promise<AvailableResponse> => {
+    const response = await axiosBase.get<AvailableResponse>(
+      `${endpoints.checkUsername}${username}`,
     )
 
     return response.data

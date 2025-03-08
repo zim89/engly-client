@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { EngLevelEnum, GenderEnum, NativeLangEnum, Regex } from '@/shared/constants'
+import { EngLevelEnum, GenderEnum, NativeLangEnum, regex } from '@/shared/constants'
 import type { EngLevelType, GenderType, NativeLangType } from '@/shared/types'
 
 const maxUsernameLength = 50
@@ -14,10 +14,13 @@ export const RegisterFormSchema = z
       .min(1, {
         message: 'Required field',
       })
+      .min(2, {
+        message: 'Username must be at least 2 characters',
+      })
       .max(maxUsernameLength, {
         message: `Username must be less than ${maxUsernameLength} characters`,
       })
-      .regex(new RegExp(Regex.Username), {
+      .regex(new RegExp(regex.username), {
         message:
           'Username must start with a letter and can contain only letters, numbers, dots, underscores and hyphens',
       }),
@@ -40,7 +43,7 @@ export const RegisterFormSchema = z
       .max(maxPasswordLength, {
         message: `Password must be less than ${maxPasswordLength} characters`,
       })
-      .regex(new RegExp(Regex.Password), {
+      .regex(new RegExp(regex.password), {
         message:
           'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
       }),
@@ -80,3 +83,14 @@ export const RegisterFormSchema = z
   )
 
 export type RegisterFormValues = z.infer<typeof RegisterFormSchema>
+
+export const LoginFormSchema = z.object({
+  email: z.string().email({
+    message: 'Invalid email address',
+  }),
+  password: z.string().min(1, {
+    message: 'Required field',
+  }),
+})
+
+export type LoginFormValues = z.infer<typeof LoginFormSchema>

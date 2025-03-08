@@ -1,2 +1,2 @@
 export * from './validators'
-export * from './register-schema'
+export * from './schema'

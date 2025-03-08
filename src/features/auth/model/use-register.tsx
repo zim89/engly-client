@@ -1,10 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { authApi, type RegisterRequestDto } from '@/entities/auth'
-import { AppRoutes } from '@/shared/config'
 import { saveTokenStorage } from '@/shared/utils'
 
 export interface RegisterMutationParams {
@@ -17,7 +15,6 @@ export interface RegisterMutationParams {
 
 export function useRegister() {
   const abortController = new AbortController()
-  const router = useRouter()
 
   const registerMutation = useMutation({
     mutationFn: ({ formData, meta }: RegisterMutationParams) =>
@@ -31,7 +28,8 @@ export function useRegister() {
     onSuccess: async data => {
       toast.success('User registered successfully.')
       saveTokenStorage(data.access_token)
-      router.push(AppRoutes.chats)
+      console.log(data)
+      // router.push(AppRoutes.chats)
     },
     // onSettled: async (data, error, variables, context) => {},
   })

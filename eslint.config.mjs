@@ -97,6 +97,18 @@ const eslintConfig = [
               ],
               allow: ['index.ts'],
             },
+            // shared/assets
+            {
+              target: [
+                [
+                  'shared',
+                  {
+                    segment: 'assets',
+                  },
+                ],
+              ],
+              allow: ['**'],
+            },
             // shared/hooks
             {
               target: [
@@ -107,7 +119,7 @@ const eslintConfig = [
                   },
                 ],
               ],
-              allow: ['index.ts', '*.(ts|tsx)'],
+              allow: ['index.ts'],
             },
             // shared/utils
             {

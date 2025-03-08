@@ -13,32 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/ui/common/select'
-import { EngLevelEnum, GenderEnum, NativeLangEnum } from '@/shared/constants'
+import { cn } from '@/shared/utils'
 import type { RegisterFormValues } from '../lib'
-
-const data = [
-  {
-    name: 'gender',
-    label: 'Gender',
-    placeholder: 'Select your gender',
-    type: 'select',
-    obj: GenderEnum,
-  },
-  {
-    name: 'nativeLanguage',
-    label: 'Native language',
-    placeholder: 'Select your native language',
-    type: 'select',
-    obj: NativeLangEnum,
-  },
-  {
-    name: 'englishLevel',
-    label: 'Native language',
-    placeholder: 'Select your English level',
-    type: 'select',
-    obj: EngLevelEnum,
-  },
-] as const
+import { profileStepData } from '../model'
 
 interface StepProfileProps {
   form: UseFormReturn<RegisterFormValues>
@@ -46,30 +23,36 @@ interface StepProfileProps {
 
 export const StepProfile = ({ form }: StepProfileProps) => {
   return (
-    <div className='space-y-6'>
-      {data.map(i => (
+    <div className='space-y-5 xl:space-y-3'>
+      {profileStepData.map(i => (
         <FormField
           key={i.name}
           control={form.control}
           name={i.name}
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>{i.label}</FormLabel>
+            <FormItem className='space-y-1 md:space-y-3'>
+              <FormLabel className='form-label required'>{i.label}</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger
+                    className={cn(
+                      'form-input',
+                      !field.value && '!text-foreground/30',
+                      form.formState.errors[i.name] && '!border-destructive',
+                    )}
+                  >
                     <SelectValue placeholder={i.placeholder} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {Object.values(i.obj).map(value => (
+                  {i.items.map(({ value, label }) => (
                     <SelectItem key={value} value={value}>
-                      {value}
+                      {label}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-              <FormMessage />
+              <FormMessage className='form-error' />
             </FormItem>
           )}
         />

@@ -23,3 +23,7 @@ export interface AuthResponse {
   user_name: string
   refresh_token: string
 }
+
+export interface AvailableResponse {
+  available: boolean
+}
