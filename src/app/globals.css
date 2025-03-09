@@ -30,8 +30,8 @@ body {
     --success: 137 83% 40%; /* #11BC41 */
     --success-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --muted: 0 0% 0% 30%; /* hsl(0, 0%, 0%, 30%) */
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 0 0% 32%; /* #525252 */
+    --muted-foreground: 0 0% 32%; /* #525252 */
 
     --border: 220 13% 91%; /* #E5E7EB */
     --input: 0 0% 98%; /* #FAFAFA */
@@ -110,6 +110,10 @@ body {
   /* BUTTONS */
   .btn-action {
     @apply text-foreground;
+  }
+
+  .btn-link {
+    @apply flex h-9 items-center justify-center text-nowrap rounded-[10px] bg-primary px-3 text-sm/none font-semibold text-primary-foreground transition-colors duration-300 hover:bg-primary-dark md:h-[52px] md:px-6 xl:px-7 xl:text-xl/none;
   }
 
   /* FORM */
