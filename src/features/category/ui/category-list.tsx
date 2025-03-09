@@ -4,7 +4,7 @@ import { categories } from '../model'
 
 export const CategoryList = () => {
   return (
-    <div className='grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-3 xl:gap-6'>
+    <div className='grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4 xl:gap-6'>
       {categories.map(cat => (
         <Link
           href={cat.title.toLowerCase()}
